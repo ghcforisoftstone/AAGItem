@@ -10,4 +10,9 @@ public class HelloWorld {
     public String hello(){
         return "Hello World again!";
     }
+
+    @RequestMapping("/")
+    public String index(){
+        return "Hello World!";
+    }
 }
