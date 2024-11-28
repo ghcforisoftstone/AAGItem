@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  pre_build:
+    commands:
+      - mvn --version
+  build:
+    commands:
+      - mvn clean && mvn package -Dmaven.test.skip=true
+artifacts:
+  files:
+    - target/AAGItem-1.0-SNAPSHOT.jar
+    - scripts/*.sh
+    - configs/*.service
+    - appspec.yml
+  discard-paths: yes
