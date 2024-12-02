@@ -13,4 +13,4 @@ if [ ! -f "$JAR_FILE_PATH" ]; then
 fi
 
 # 启动Java应用程序
-exec java $JAVA_OPTS -jar $JAR_FILE_PATH $@
+exec nohup java $JAVA_OPTS -jar $JAR_FILE_PATH $@
