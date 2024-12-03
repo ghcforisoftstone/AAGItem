@@ -1,7 +1,39 @@
 #!/bin/bash
 
+# 检查JDK是否安装
+if [ -z "$(command -v java)" ]; then
+    echo "JDK未安装，开始安装..."
+
+    # 这里替换为你的JDK安装命令
+    sudo apt-get update
+    sudo dnf install java-1.8.0-amazon-corretto-devel
+
+    # 检查安装是否成功
+    if [ -z "$(command -v java)" ]; then
+        echo "JDK安装失败，脚本停止执行。"
+        exit 1
+    fi
+
+    echo "JDK安装成功。"
+else
+    echo "JDK已安装。"
+fi
+
 # 定义JAR文件的路径
 JAR_FILE_PATH="/home/ec2-user/AAGItem-1.0-SNAPSHOT.jar"
+
+# 定义日志文件的路径
+LOG_FILE_PATH="/home/ec2-user/my-project.log"
+
+# 检查文件是否存在
+if [ ! -e "$LOG_FILE_PATH" ]; then
+    # 文件不存在，创建文件
+    touch "$LOG_FILE_PATH"
+    echo "文件已创建：$LOG_FILE_PATH"
+else
+    echo "文件已存在：$LOG_FILE_PATH"
+fi
+
 
 # 定义JVM选项
 JAVA_OPTS="-Xms512m -Xmx1024m"
@@ -24,4 +56,4 @@ if [ ! -f "$JAR_FILE_PATH" ]; then
 fi
 
 # 启动Java应用程序
-exec nohup java -jar $JAR_FILE_PATH  >  /home/ec2-user/my-project.log 2>&1 &
+exec nohup java -jar $JAR_FILE_PATH  >  $LOG_FILE_PATH 2>&1 &

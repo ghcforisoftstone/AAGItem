@@ -8,11 +8,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorld {
     @RequestMapping("/hello")
     public String hello(){
-        return "Hello World again! I am a Java Application";
+        return "Hello World again!";
     }
 
     @RequestMapping("/")
     public String index(){
-        return "Hello World! I am a Java Application";
+        return "Hello World!";
+    }
+
+
+
+    @RequestMapping("/login")
+    public String login(){
+        return "Hello World! Please login";
     }
 }
