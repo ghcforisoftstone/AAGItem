@@ -5,7 +5,7 @@ if [ -z "$(command -v java)" ]; then
     echo "JDK未安装，开始安装..."
 
     # 这里替换为你的JDK安装命令
-    sudo dnf install java-1.8.0-amazon-corretto-devel
+    sudo dnf install java-1.8.0-amazon-corretto-devel -y
 
     # 等待JDK安装完成
     echo "正在等待JDK安装完成..."
