@@ -5,8 +5,16 @@ if [ -z "$(command -v java)" ]; then
     echo "JDK未安装，开始安装..."
 
     # 这里替换为你的JDK安装命令
-    sudo apt-get update
     sudo dnf install java-1.8.0-amazon-corretto-devel
+
+    # 等待JDK安装完成
+    echo "正在等待JDK安装完成..."
+    sleep 60  # 假设JDK安装需要30秒，可以根据实际情况调整这个时间
+
+    # 后续命令
+    echo "JDK安装完成，继续执行后续命令..."
+
+    sudo java -version
 
     # 检查安装是否成功
     if [ -z "$(command -v java)" ]; then
