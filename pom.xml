@@ -13,6 +13,13 @@
         <version>2.7.14</version>
     </parent>
 
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -20,11 +27,14 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <distributionManagement>
+        <repository>
+            <id>dev-maven</id>
+            <name>dev-maven</name>
+            <url>https://dev-859173707707.d.codeartifact.us-west-2.amazonaws.com/maven/aag-maven/</url>
+        </repository>
+    </distributionManagement>
+
 
 
     <!-- 打包格式 -->
